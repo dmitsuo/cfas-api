@@ -1,11 +1,15 @@
 package com.algaworks.algamoney.api.model;
 
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+@Entity
+@Table(name = "pessoa")
 public class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +21,7 @@ public class Pessoa {
 	private boolean ativo = true;
 	@Embedded
 	private Endereco endereco;
-	
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -90,6 +94,6 @@ public class Pessoa {
 	@Override
 	public String toString() {
 		return nome;
-	}	
+	}
 
 }
