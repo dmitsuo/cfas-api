@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.algaworks.algamoney.api.model.Categoria;
 import com.algaworks.algamoney.api.model.Pessoa;
 import com.algaworks.algamoney.api.repository.PessoaRepository;
 
@@ -32,7 +31,7 @@ public class PessoaResource {
 	
 	@GetMapping
 	public List<Pessoa> listar() {	
-		return pessoaRepository.findAll();		
+		return pessoaRepository.findAll();
 	}
 	
 	@PostMapping
