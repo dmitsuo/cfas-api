@@ -46,6 +46,7 @@ public class LancamentoResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{codigo}").buildAndExpand(lancamentoSalvo.getCodigo()).toUri();		
 		
 		return ResponseEntity.created(uri).body(lancamentoSalvo);
+		
 	}
 	
 	@GetMapping("/{codigo}")
