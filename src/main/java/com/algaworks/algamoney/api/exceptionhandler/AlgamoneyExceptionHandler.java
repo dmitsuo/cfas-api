@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -94,4 +95,13 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 		
 	}
+	
+//	@ExceptionHandler({BindException.class})	
+//	public ResponseEntity<Object> handleBindException(BindException ex, WebRequest request) {
+//		String mensagemUsuario = messageSource.getMessage("recurso.erro-conversao", null, LocaleContextHolder.getLocale());
+//		String mensagemDesenvolvedor = ExceptionUtils.getRootCauseMessage(ex);
+//		List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor)); 
+//		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+//		
+//	}
 }

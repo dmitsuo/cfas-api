@@ -12,6 +12,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.algaworks.algamoney.api.model.Lancamento;
+import com.algaworks.algamoney.api.model.Lancamento_;
 import com.algaworks.algamoney.api.repository.filter.LancamentoFilter;
 
 public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
@@ -39,15 +40,15 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 		List<Predicate> p = new ArrayList<>();
 		
 		if (!f.isEmptyDataVencimentoDe()) {
-			p.add(b.greaterThanOrEqualTo(r.get("dataVencimento"), f.getDataVencimentoDe()));
+			p.add(b.greaterThanOrEqualTo(r.get(Lancamento_.DATA_VENCIMENTO), f.getDataVencimentoDe()));
 		}
 		
 		if (!f.isEmptyDataVencimentoAte()) {
-			p.add(b.lessThanOrEqualTo(r.get("dataVencimento"), f.getDataVencimentoAte()));			
+			p.add(b.lessThanOrEqualTo(r.get(Lancamento_.DATA_VENCIMENTO), f.getDataVencimentoAte()));			
 		}
 		
 		if (!f.isEmptyDescricao()) {
-			p.add(b.like(b.lower(r.get("descricao")), "%" + f.getDescricao().toLowerCase() + "%"));
+			p.add(b.like(b.lower(r.get(Lancamento_.DESCRICAO)), "%" + f.getDescricao().toLowerCase() + "%"));
 		}
 
 		return p.toArray(new Predicate[p.size()]);
