@@ -66,6 +66,7 @@ public class LancamentoResource {
 		return c.isPresent() ? ResponseEntity.ok(c.get()) : ResponseEntity.notFound().build();
 	}
 
+	// Já havia sido implementado antes da aula 5.8
 	@DeleteMapping("/{codigo}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long codigo) {
