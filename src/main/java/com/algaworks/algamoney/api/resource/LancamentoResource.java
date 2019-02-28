@@ -11,6 +11,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,8 +45,8 @@ public class LancamentoResource {
 	private MessageSource msg;
 
 	@GetMapping
-	public List<Lancamento> pesquisar(LancamentoFilter f) {
-		return lancamentoRepository.filtrar(f);
+	public Page<Lancamento> pesquisar(LancamentoFilter f, Pageable pageable) {
+		return lancamentoRepository.filtrar(f, pageable);
 	}
 
 	@PostMapping
