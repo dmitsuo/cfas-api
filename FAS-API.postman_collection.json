@@ -11,10 +11,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "localhost:8080/categorias",
 					"host": [
@@ -33,10 +29,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "localhost:8080/pessoas",
 					"host": [
@@ -51,14 +43,28 @@
 			"response": []
 		},
 		{
+			"name": "Lançamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/lancamentos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lancamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Categoria por código",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://localhost:8080/categorias/18",
 					"protocol": "http",
@@ -79,10 +85,6 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "http://localhost:8080/pessoas/1",
 					"protocol": "http",
@@ -99,14 +101,50 @@
 			"response": []
 		},
 		{
+			"name": "Lançamento por código",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/lancamentos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lancamentos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Excluir Pessoa por código",
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"url": {
+					"raw": "http://localhost:8080/pessoas/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir Lançamento por código",
+			"request": {
+				"method": "DELETE",
+				"header": [],
 				"url": {
 					"raw": "http://localhost:8080/pessoas/3",
 					"protocol": "http",
@@ -179,6 +217,34 @@
 			"response": []
 		},
 		{
+			"name": "Novo Lançamento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"descricao\" : \"Prêmio semestral\",\n\"dataVencimento\" : \"2017-07-10\",\n\"valor\" : 10000,\n\"tipo\" : \"RECEITA\",\n\"categoria\" : {\n\t\"codigo\" : 5\n  },\n\"pessoa\" : {\n\t\"codigo\" : 1\n  }\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/lancamentos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lancamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Atualizar Pessoa",
 			"request": {
 				"method": "PUT",
@@ -236,6 +302,115 @@
 						"pessoas",
 						"5",
 						"ativo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lancamentos com parâmetros",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "93f5eed7-89ec-4fbb-8bce-0227c241c1f1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/lancamentos?dataVencimentoDe=2018-12-01&dataVencimentoAte=2018-12-28&descricao=padaria",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"lancamentos"
+					],
+					"query": [
+						{
+							"key": "dataVencimentoDe",
+							"value": "2018-12-01"
+						},
+						{
+							"key": "dataVencimentoAte",
+							"value": "2018-12-28"
+						},
+						{
+							"key": "descricao",
+							"value": "padaria"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Novo Access Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "angular",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client",
+							"value": "angular",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
 					]
 				}
 			},
