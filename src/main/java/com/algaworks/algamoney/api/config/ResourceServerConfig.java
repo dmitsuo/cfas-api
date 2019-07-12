@@ -23,7 +23,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		auth.inMemoryAuthentication()
 		.withUser("admin")
 		.password("admin")
-		//.password(passwordEncoder().encode("admin"))
+		// .password(passwordEncoder().encode("admin"))
 		.roles("ROLE");		
 	}
 	
