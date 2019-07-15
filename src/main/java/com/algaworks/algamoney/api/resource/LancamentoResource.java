@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,12 +46,14 @@ public class LancamentoResource {
 	private MessageSource msg;
 
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
 	public Page<Lancamento> pesquisar(LancamentoFilter f, Pageable pageable) {
 		return lancamentoRepository.filtrar(f, pageable);
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_LANCAMENTO') and #oauth2.hasScope('write')")
 	public ResponseEntity<Lancamento> criar(@Valid @RequestBody Lancamento lanc, HttpServletResponse response) {
 
 		Lancamento lancamentoSalvo = lancamentoService.salvar(lanc);
@@ -63,6 +66,7 @@ public class LancamentoResource {
 	}
 
 	@GetMapping("/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
 	public ResponseEntity<Lancamento> buscarPeloCodigo(@PathVariable Long codigo, HttpServletResponse response) {
 		Optional<Lancamento> c = lancamentoRepository.findById(codigo);
 		return c.isPresent() ? ResponseEntity.ok(c.get()) : ResponseEntity.notFound().build();
@@ -71,6 +75,7 @@ public class LancamentoResource {
 	// Já havia sido implementado antes da aula 5.8
 	@DeleteMapping("/{codigo}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_LANCAMENTO') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Long codigo) {
 		lancamentoRepository.deleteById(codigo);
 	}
