@@ -21,8 +21,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 		http.authorizeRequests()
 				.antMatchers("/categorias").permitAll()
-				.antMatchers("/h2-console").permitAll()
-				.antMatchers("/h2console").permitAll()
+				.antMatchers("/h2-console/**").permitAll()
+				.antMatchers("/h2-console*").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

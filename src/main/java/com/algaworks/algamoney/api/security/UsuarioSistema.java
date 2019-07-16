@@ -21,5 +21,9 @@ public class UsuarioSistema extends User {
 	public Usuario getUsuario() {
 		return usuario;
 	}
+	
+	public String getNome() {
+		return usuario.getNome();
+	}
 
 }
