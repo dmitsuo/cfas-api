@@ -1,6 +1,5 @@
 package com.algaworks.algamoney.api.model;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,7 +13,7 @@ import lombok.ToString;
 @Data
 @ToString(onlyExplicitlyIncluded = true, includeFieldNames = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Permissao implements Serializable {
+public class Permissao {
 
 	@Id
 	@EqualsAndHashCode.Include

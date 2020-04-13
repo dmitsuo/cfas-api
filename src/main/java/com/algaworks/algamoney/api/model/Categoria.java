@@ -1,6 +1,5 @@
 package com.algaworks.algamoney.api.model;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +17,7 @@ import lombok.ToString;
 @Data
 @ToString(onlyExplicitlyIncluded = true, includeFieldNames = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Categoria implements Serializable {
+public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include

@@ -1,6 +1,5 @@
 package com.algaworks.algamoney.api.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -23,7 +22,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "lancamento")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Lancamento implements Serializable {
+public class Lancamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

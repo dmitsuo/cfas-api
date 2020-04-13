@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.io.Serializable;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +21,7 @@ import lombok.ToString;
 @Data
 @ToString(onlyExplicitlyIncluded = true, includeFieldNames = false)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Pessoa implements Serializable {
+public class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
